@@ -1,0 +1,12 @@
+[submodule "freighthub-auth-service"]
+	path = freighthub-auth-service
+	url = https://github.com/FreightHub-Platform/freighthub-auth-service.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/FreightHub-Platform/frontend.git
+[submodule "freighthub-backend"]
+	path = freighthub-backend
+	url = https://github.com/FreightHub-Platform/freighthub-backend.git
+[submodule "mobile-application"]
+	path = mobile-application
+	url = https://github.com/FreightHub-Platform/mobile-application.git
