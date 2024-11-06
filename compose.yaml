@@ -1,0 +1,30 @@
+services:
+  caddy:
+    image: caddy:alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/caddy-config/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/caddy-data:/data
+    networks:
+      - app_network
+  auth:
+    build: ./freighthub-auth-service/.
+    container_name: auth
+    restart: unless-stopped
+    networks:
+      - app_network
+    depends_on:
+      - caddy
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
+
+networks:
+  app_network:
+    driver: bridge
